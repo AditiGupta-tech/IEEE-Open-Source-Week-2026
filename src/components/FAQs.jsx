@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./Faqs.css";
+import "./FAQs.css";
 
 const FAQ_CATEGORIES = [
   { label: "All Queries", value: "all" },
