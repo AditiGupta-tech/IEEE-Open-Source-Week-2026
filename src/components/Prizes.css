@@ -1,0 +1,277 @@
+
+.prizes-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(16, 38, 91, 0.25),
+      transparent 70%
+    ),
+    #05070d;
+}
+
+/* Colorful stars rushing from the center to the edges */
+.prizes-section::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, #22d3ee 60%, transparent 100%),
+    radial-gradient(2px 2px at 30% 70%, #a855f7 60%, transparent 100%),
+    radial-gradient(2px 2px at 70% 25%, #ec4899 60%, transparent 100%),
+    radial-gradient(2px 2px at 85% 60%, #38bdf8 60%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 45%, #ffffff 60%, transparent 100%),
+    radial-gradient(2px 2px at 40% 15%, #818cf8 60%, transparent 100%),
+    radial-gradient(2px 2px at 20% 85%, #f472b6 60%, transparent 100%);
+
+  background-size: 220px 220px;
+  animation: prizes-stars-expand 1.4s linear infinite;
+}
+
+/* Neon streaks expanding outward */
+.prizes-section::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg 3deg,
+      rgba(34, 211, 238, 0.55) 3.12deg 3.2deg,
+      transparent 3.35deg 7deg,
+      rgba(168, 85, 247, 0.5) 7.12deg 7.2deg,
+      transparent 7.35deg 11deg,
+      rgba(236, 72, 153, 0.45) 11.12deg 11.2deg,
+      transparent 11.35deg 15deg
+    );
+
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    black 25%,
+    black 75%,
+    transparent 100%
+  );
+
+  mask-image: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    black 25%,
+    black 75%,
+    transparent 100%
+  );
+
+  animation: prizes-streaks-expand 1.2s linear infinite;
+}
+
+@keyframes prizes-stars-expand {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes prizes-streaks-expand {
+  0% {
+    transform: scale(0.25) rotate(0deg);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.7) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+.prizes-intro {
+  max-width: 620px;
+  margin: -20px 0 48px;
+  color: var(--mu);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.prizes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  align-items: stretch;
+  perspective: 1000px;
+}
+
+.prize-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 380px;
+  padding: 40px 30px;
+  overflow: hidden;
+  border: 1px solid var(--ln);
+  background: linear-gradient(160deg, #111d42, #080e22 75%);
+  text-align: center;
+  transform-style: preserve-3d;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* Purple spotlight on hover — preserved */
+.prize-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at 50% 35%,
+    rgba(139, 92, 246, 0.28),
+    rgba(99, 102, 241, 0.1) 30%,
+    transparent 68%
+  );
+  transition: opacity 250ms ease;
+}
+
+.prize-card:hover::before {
+  opacity: 1;
+}
+
+.prize-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.prize-card:hover {
+  transform: translateY(-10px) rotateX(3deg) rotateY(-2deg);
+  border-color: var(--cy);
+  box-shadow:
+    0 20px 45px rgba(34, 211, 238, 0.14),
+    0 0 24px rgba(34, 211, 238, 0.08);
+}
+
+.prize-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 32px;
+  border: 1px solid var(--ln);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 48px;
+  transition:
+    transform 250ms ease,
+    filter 250ms ease;
+}
+
+.prize-card:hover .prize-icon {
+  transform: translateZ(25px) scale(1.08);
+}
+
+.prizes-first .prize-icon {
+  filter: drop-shadow(0 0 18px rgba(255, 196, 55, 0.35));
+}
+
+.prizes-second .prize-icon {
+  filter: drop-shadow(0 0 18px rgba(190, 200, 230, 0.3));
+}
+
+.prizes-third .prize-icon {
+  filter: drop-shadow(0 0 18px rgba(218, 139, 83, 0.35));
+}
+
+.prize-card h3 {
+  margin: 0 0 20px;
+  color: var(--tx);
+  font-family: var(--sa);
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.prize-description {
+  max-width: 360px;
+  margin: 0;
+  color: var(--mu);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.prizes-first {
+  border-top: 2px solid #f4c95d;
+}
+
+.prizes-second {
+  border-top: 2px solid #b7c5dc;
+}
+
+.prizes-third {
+  border-top: 2px solid #c99570;
+}
+
+@media (max-width: 900px) {
+  .prizes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .prizes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prize-card {
+    min-height: 300px;
+    padding: 30px 24px;
+  }
+
+  .prize-card h3 {
+    font-size: 26px;
+  }
+
+  .prize-description {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prizes-section::before,
+  .prizes-section::after {
+    animation: none;
+  }
+
+  .prize-card,
+  .prize-icon,
+  .prize-card::before {
+    transition: none;
+  }
+
+  .prize-card:hover,
+  .prize-card:hover .prize-icon {
+    transform: none;
+  }
+}
