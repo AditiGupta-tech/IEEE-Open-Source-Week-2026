@@ -5,103 +5,33 @@
   overflow: hidden;
   background:
     radial-gradient(
-      ellipse at 50% 50%,
-      rgba(16, 38, 91, 0.25),
-      transparent 70%
+      ellipse at 0% 100%,
+      rgba(0, 190, 255, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(100, 45, 180, 0.10),
+      transparent 50%
     ),
     #05070d;
 }
 
-/* Colorful stars rushing from the center to the edges */
-.prizes-section::before {
-  content: "";
+/* Animated background canvas */
+.prizes-star-canvas {
   position: absolute;
-  inset: -50%;
-  z-index: -1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
   pointer-events: none;
-
-  background-image:
-    radial-gradient(2px 2px at 10% 20%, #22d3ee 60%, transparent 100%),
-    radial-gradient(2px 2px at 30% 70%, #a855f7 60%, transparent 100%),
-    radial-gradient(2px 2px at 70% 25%, #ec4899 60%, transparent 100%),
-    radial-gradient(2px 2px at 85% 60%, #38bdf8 60%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 55% 45%, #ffffff 60%, transparent 100%),
-    radial-gradient(2px 2px at 40% 15%, #818cf8 60%, transparent 100%),
-    radial-gradient(2px 2px at 20% 85%, #f472b6 60%, transparent 100%);
-
-  background-size: 220px 220px;
-  animation: prizes-stars-expand 1.4s linear infinite;
 }
 
-/* Neon streaks expanding outward */
-.prizes-section::after {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  z-index: -1;
-  pointer-events: none;
-
-  background:
-    repeating-conic-gradient(
-      from 0deg at 50% 50%,
-      transparent 0deg 3deg,
-      rgba(34, 211, 238, 0.55) 3.12deg 3.2deg,
-      transparent 3.35deg 7deg,
-      rgba(168, 85, 247, 0.5) 7.12deg 7.2deg,
-      transparent 7.35deg 11deg,
-      rgba(236, 72, 153, 0.45) 11.12deg 11.2deg,
-      transparent 11.35deg 15deg
-    );
-
-  -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    transparent 0%,
-    black 25%,
-    black 75%,
-    transparent 100%
-  );
-
-  mask-image: radial-gradient(
-    ellipse at center,
-    transparent 0%,
-    black 25%,
-    black 75%,
-    transparent 100%
-  );
-
-  animation: prizes-streaks-expand 1.2s linear infinite;
-}
-
-@keyframes prizes-stars-expand {
-  0% {
-    transform: scale(0.2);
-    opacity: 0;
-  }
-
-  15% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-}
-
-@keyframes prizes-streaks-expand {
-  0% {
-    transform: scale(0.25) rotate(0deg);
-    opacity: 0;
-  }
-
-  25% {
-    opacity: 0.7;
-  }
-
-  100% {
-    transform: scale(1.7) rotate(5deg);
-    opacity: 0;
-  }
+/* Keep all content above the background animation */
+.prizes-section > .osw-w {
+  position: relative;
+  z-index: 1;
 }
 
 .prizes-intro {
@@ -130,7 +60,12 @@
   padding: 40px 30px;
   overflow: hidden;
   border: 1px solid var(--ln);
-  background: linear-gradient(160deg, #111d42, #080e22 75%);
+  border-radius: 24px;
+  background: linear-gradient(
+    160deg,
+    rgba(15, 24, 45, 0.96),
+    rgba(7, 12, 27, 0.97) 75%
+  );
   text-align: center;
   transform-style: preserve-3d;
   transition:
@@ -139,7 +74,7 @@
     box-shadow 220ms ease;
 }
 
-/* Purple spotlight on hover — preserved */
+/* Existing purple hover spotlight */
 .prize-card::before {
   content: "";
   position: absolute;
@@ -181,6 +116,7 @@
   height: 90px;
   margin: 0 auto 32px;
   border: 1px solid var(--ln);
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.03);
   font-size: 48px;
   transition:
@@ -259,9 +195,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .prizes-section::before,
-  .prizes-section::after {
-    animation: none;
+  .prizes-star-canvas {
+    display: none;
   }
 
   .prize-card,
