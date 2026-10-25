@@ -1,0 +1,12 @@
+@import './styles/osw-shared.css';
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--tx);
+  font: 400 16px/1.6 var(--sa);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
