@@ -2,6 +2,7 @@
 import About from './components/About';
 import FAQs from './components/FAQs';
 import Footer from './components/Footer';
+import Themes from './components/Themes';
 import Speakers from './components/Speakers';
 import UpcomingEvents from './components/UpcomingEvents';
 import Prizes from './components/Prizes';
@@ -30,6 +31,7 @@ export default function App() {
         <Stub id="hero" label="Hero (teammate)" />
         <About />
         <Stub id="timeline" label="Timeline (teammate)" />
+        <Themes />
         <Stub id="events" label="Events (teammate)" />
         <Speakers />
 
