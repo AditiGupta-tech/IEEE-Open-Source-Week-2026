@@ -1,9 +1,12 @@
+
 import About from './components/About';
 import FAQs from './components/FAQs';
 import Footer from './components/Footer';
 import Speakers from './components/Speakers';
+import UpcomingEvents from './components/UpcomingEvents';
+import Prizes from './components/Prizes';
 
-// placeholders for the sections your teammates are building
+// Temporary placeholders for sections teammates are building
 const Stub = ({ id, label }) => (
   <section
     id={id}
@@ -29,9 +32,14 @@ export default function App() {
         <Stub id="timeline" label="Timeline (teammate)" />
         <Stub id="events" label="Events (teammate)" />
         <Speakers />
+
+        <UpcomingEvents />
+        <Prizes />
+
         <Stub id="register" label="Registration (teammate)" />
         <FAQs />
       </main>
+
       <Footer />
     </>
   );
