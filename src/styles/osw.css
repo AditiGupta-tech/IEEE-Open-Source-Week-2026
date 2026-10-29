@@ -587,3 +587,22 @@
         font-size: 10px !important;
     }
 }
+
+/* Reduce speaker image/card height on mobile */
+@media (max-width: 768px) {
+    .osw #speakers .sp .sk .pt {
+        aspect-ratio: 4 / 3 !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .osw #speakers .sp .sk .pt img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .osw #speakers .sp .sk h3 {
+        margin-top: 10px !important;
+    }
+}
