@@ -242,8 +242,20 @@ export default function Hero() {
       r.setSize(W, H, false);
       cam.aspect = W / H;
       cam.updateProjectionMatrix();
-      G.position.set(W > 900 ? 2.1 : 0, W > 900 ? 0 : 1.2, 0);
-      G.scale.setScalar(W > 900 ? 1 : 0.74);
+      // Position and size of the 3D object
+      if (W <= 700) {
+        // Mobile: smaller ball, positioned above the heading
+        G.position.set(0, 2.5, 0);
+        G.scale.setScalar(0.48);
+      } else if (W <= 900) {
+        // Tablet
+        G.position.set(0, 1.8, 0);
+        G.scale.setScalar(0.65);
+      } else {
+        // Desktop: preserve existing layout
+        G.position.set(2.1, 0, 0);
+        G.scale.setScalar(1);
+      }
     };
     const onMove = (ev) => {
       tx = ev.clientX / window.innerWidth - 0.5;
