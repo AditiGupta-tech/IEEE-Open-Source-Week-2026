@@ -3,9 +3,19 @@ import "../styles/osw.css";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import {
-  Ticker, About, Highlights, Themes, Timeline, Events,
-  Speakers, Register, Faq, Contact, Footer,
+  Ticker,
+  About,
+  Highlights,
+  Themes,
+  Timeline,
+  Events,
+  Speakers,
+  Register,
+  Contact,
+  Footer,
 } from "./Sections";
+
+import FAQs from "./FAQs";
 
 export default function Home() {
   const root = useRef(null);
@@ -106,7 +116,7 @@ export default function Home() {
         <Events />
         <Speakers />
         <Register />
-        <Faq />
+        <FAQs />
         <Contact />
       </main>
       <Footer />

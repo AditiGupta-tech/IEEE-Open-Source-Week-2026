@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three"; // install: npm i three@0.128.0
 import { CONFIG } from "../data/config";
+import "./Hero.css";
 
 export default function Hero() {
   const heroRef = useRef(null);

@@ -312,3 +312,27 @@
 .osw .lg{display:flex;align-items:center}
 .osw .lg img{height:58px;width:auto;display:block}
 @media(max-width:480px){.osw .lg img{height:50px}}
+
+
+
+/* Footer typography fix */
+.osw footer .big {
+    font-size: clamp(28px, 6vw, 80px);
+    line-height: 0.95;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.osw footer .w > div {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+
+
+
+/* Hide the unwanted floating Quick Links navigation */
+.osw .ft-wrap > nav[aria-label="Footer"] {
+    display: none !important;
+}

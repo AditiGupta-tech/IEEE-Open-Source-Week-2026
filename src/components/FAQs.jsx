@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import "./FAQs.css";
 
@@ -104,7 +105,8 @@ function Faqs() {
       item.category === activeCategory
   );
 
- useEffect(() => {
+  // Animated background
+  useEffect(() => {
     const wrapper = wrapperRef.current;
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
@@ -157,6 +159,7 @@ function Faqs() {
             particle.x,
             Math.max(0, width - 10)
           );
+
           particle.y = Math.min(
             particle.y,
             Math.max(18, height - 10)
@@ -173,6 +176,7 @@ function Faqs() {
       context.globalAlpha = particle.opacity;
       context.fillStyle = particle.color;
       context.font = `500 ${particle.size}px monospace`;
+
       context.fillText(
         particle.text,
         particle.x,
@@ -193,6 +197,7 @@ function Faqs() {
 
       if (particle.x < 10 || particle.x > width - 10) {
         particle.vx *= -1;
+
         particle.x = Math.max(
           10,
           Math.min(width - 10, particle.x)
@@ -201,6 +206,7 @@ function Faqs() {
 
       if (particle.y < 18 || particle.y > height - 10) {
         particle.vy *= -1;
+
         particle.y = Math.max(
           18,
           Math.min(height - 10, particle.y)
@@ -301,6 +307,7 @@ function Faqs() {
     );
 
     wrapper.addEventListener("pointerleave", resetMouse);
+
     document.addEventListener(
       "visibilitychange",
       handleVisibilityChange
@@ -354,14 +361,17 @@ function Faqs() {
         "pointermove",
         handlePointerMove
       );
+
       wrapper.removeEventListener(
         "pointerleave",
         resetMouse
       );
+
       document.removeEventListener(
         "visibilitychange",
         handleVisibilityChange
       );
+
       window.removeEventListener("resize", resizeCanvas);
 
       if (typeof reducedMotion.removeEventListener === "function") {
@@ -375,6 +385,8 @@ function Faqs() {
     };
   }, []);
 
+  // Close the current question when changing to a category
+  // that does not contain that question.
   useEffect(() => {
     const currentFAQ = FAQ_ITEMS.find(
       (item) => item.id === openFAQ
@@ -398,7 +410,11 @@ function Faqs() {
   }
 
   return (
-    <section className="faqs-section" aria-labelledby="faqs-heading">
+    <section
+      id="faq"
+      className="faqs-section"
+      aria-labelledby="faqs-heading"
+    >
       <div className="faqs-wrapper" ref={wrapperRef}>
         <canvas
           className="faqs-background-canvas"
@@ -406,13 +422,16 @@ function Faqs() {
           aria-hidden="true"
         />
 
-        <div className="faqs-section-badge" aria-hidden="true">
+        <div
+          className="faqs-section-badge"
+          aria-hidden="true"
+        >
           COMMUNITY KNOWLEDGE BASE
         </div>
 
         <div className="faqs-inner">
           <header className="faqs-section-header">
-            <h1
+            <h2
               id="faqs-heading"
               className="faqs-main-heading"
             >
@@ -420,7 +439,7 @@ function Faqs() {
               <span className="faqs-heading-outline">
                 ASKED QUESTIONS
               </span>
-            </h1>
+            </h2>
 
             <p className="faqs-section-lead">
               Got queries? We've got answers. Explore everything
@@ -442,8 +461,8 @@ function Faqs() {
                   key={category.value}
                   type="button"
                   className={`faqs-tab-btn${
-                    isActive ? " active" : ""
-                  }`}
+    isActive ? " active" : ""
+}`}
                   aria-pressed={isActive}
                   onClick={() =>
                     handleCategoryChange(category.value)
@@ -464,11 +483,11 @@ function Faqs() {
               return (
                 <article
                   className={`faqs-item${
-                    isOpen ? " active" : ""
-                  }`}
+    isOpen ? " active" : ""
+}`}
                   key={item.id}
                 >
-                  <h2 className="faqs-question-heading">
+                  <h3 className="faqs-question-heading">
                     <button
                       className="faqs-question"
                       id={questionId}
@@ -497,7 +516,7 @@ function Faqs() {
                         ▾
                       </span>
                     </button>
-                  </h2>
+                  </h3>
 
                   <div
                     className="faqs-answer"
@@ -524,7 +543,8 @@ function Faqs() {
               </strong>
 
               <p>
-                Join the IEEE IGDTUW Discord server or contact our team.
+                Join the IEEE IGDTUW Discord server or contact
+                our team.
               </p>
             </div>
 
@@ -533,7 +553,8 @@ function Faqs() {
               href="mailto:igdtwieee@gmail.com"
               aria-label="Contact the IEEE IGDTUW team with a question"
             >
-              Ask on Discord <span aria-hidden="true">💬</span>
+              Ask on Discord{" "}
+              <span aria-hidden="true">💬</span>
             </a>
           </aside>
         </div>
