@@ -336,3 +336,44 @@
 .osw .ft-wrap > nav[aria-label="Footer"] {
     display: none !important;
 }
+
+
+/* Fix hero 3D ball on mobile */
+@media (max-width: 768px) {
+    .osw #cv {
+        transform: scale(0.72);
+        transform-origin: center center;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .osw #hero .hc {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* Fix speaker cards and text overlap on mobile */
+@media (max-width: 768px) {
+    .osw .speaker-card,
+    .osw .sp-card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .osw .speaker-card img,
+    .osw .sp-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .osw .speaker-card h3,
+    .osw .sp-card h3 {
+        position: relative;
+        z-index: 2;
+        margin-top: 12px;
+        line-height: 1.3;
+    }
+}
