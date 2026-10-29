@@ -606,3 +606,18 @@
         margin-top: 10px !important;
     }
 }
+
+
+/* Increase gap between speaker image cards and text on mobile */
+@media (max-width: 768px) {
+    .osw #speakers .sk h3 {
+        margin-top: 28px !important;
+        margin-bottom: 8px !important;
+        line-height: 1.4 !important;
+    }
+
+    .osw #speakers .sk p {
+        margin-top: 0 !important;
+        line-height: 1.6 !important;
+    }
+}
