@@ -1,4 +1,4 @@
-
+import Hero from './components/Hero';
 import About from './components/About';
 import FAQs from './components/FAQs';
 import Footer from './components/Footer';
@@ -29,7 +29,7 @@ export default function App() {
   return (
     <>
       <main>
-        <Stub id="hero" label="Hero (teammate)" />
+        <Hero />
         <About />
         <Timeline />
         <Themes />
